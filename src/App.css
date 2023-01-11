@@ -1,39 +1,64 @@
-.App {
-  text-align: center;
+:root {
+  --reddit-color : #ff4500;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
-}
-
-.App-header {
-  min-height: 100vh;
+header{
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-bottom: 1px solid black;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+h1 img {
+  height: 3.5rem;
+}
+
+header nav {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 1rem;
+  margin-bottom: 1.3rem;
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+.nav-link{
+  display: flex;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+  padding: 0.3rem;
+  border-radius: 15px;
+  font-weight: bold;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
+nav form {
+  display: flex;
+  align-items: center;
+  background-color: var(--reddit-color);
+  padding: 0.7rem;
+  border-radius: 15px;
+}
+
+nav input[type="text"] {
+  font-size: 1.4rem;
+  width: 10rem;
+  outline: none;
+}
+nav input[type="submit"] {
+  background-color: var(--reddit-color);
+  border: 0;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 450px){
+  .only-desktop {
+    display: none;
   }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
+  nav input[type="text"] {
+    width: 6rem;
   }
 }

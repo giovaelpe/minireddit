@@ -1,56 +1,52 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
+import { Popularfeed } from './Popularfeed/Popularfeed';
+
 
 function App() {
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/search");
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
+      <header>
+        <h1>
+          Minireddit
+          <img src={require('./resources/reddit-logo.png')} alt="reddit logo" />
+        </h1>
+        <nav>
+          <NavLink to="/" className="nav-link" style={({isActive}) => isActive? {backgroundColor: "black", color: "white"}: undefined} >
+            <span className='only-desktop'>Home</span>
+            <span className="material-symbols-outlined">
+              home
+            </span>
+          </NavLink>
+          <NavLink to="/about" className="nav-link" style={({isActive}) => isActive? {backgroundColor: "black", color: "white"}: undefined} >
+            <span className='only-desktop'>About</span>
+            <span className="material-symbols-outlined">
+              info
+            </span>
+          </NavLink>
+          <NavLink to="/favorites" className="nav-link" style={({isActive}) => isActive? {backgroundColor: "black", color: "white"}: undefined} >
+            <span className='only-desktop'>Favorites</span>
+            <span className="material-symbols-outlined">
+              bookmark
+            </span>
+          </NavLink>
+          <form onSubmit={handleSubmit}>
+            <input type="text" />
+            <input type="submit" className="material-symbols-outlined" value="search" />
+          </form>
+        </nav>
       </header>
+      <main>
+        <Routes>
+          <Route path='/' element={<Popularfeed />} />
+        </Routes>
+      </main>
     </div>
   );
 }
