@@ -7,13 +7,15 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import popularSlice from './Popularfeed/popularSlice';
+import subredditSlice from './Subreddit/subredditSlice';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
 const store = configureStore({
   reducer : {
-    popularFeed : popularSlice
+    popularFeed : popularSlice,
+    subredditData: subredditSlice
   }
 })
 

@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import { Popularfeed } from './Popularfeed/Popularfeed';
+import { Post } from './Post/Post';
+import { Subreddit } from './Subreddit/Subredditfeed';
 
 
 function App() {
@@ -45,6 +47,12 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={<Popularfeed />} />
+          <Route path='/subreddit/:subredditname' element={
+            <Subreddit />
+          } />
+          <Route path='/post/:postname' element={
+            <Post />
+          } />
         </Routes>
       </main>
     </div>

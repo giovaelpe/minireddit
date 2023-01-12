@@ -14,7 +14,7 @@ export function Popularfeed(props) {
     return (
         <div>
             {(popularFeed.isLoading && !popularFeed.loaded) ? <Loader /> : popularFeed.redditData['data']['children'].map((item, index) => {
-                return <Datarow arrayData={item} key={index} />
+                return <Datarow arrayData={item} key={index} showSub={true} />
             })}
         </div>
     );

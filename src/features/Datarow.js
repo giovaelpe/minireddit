@@ -15,13 +15,13 @@ export function Datarow(props) {
         <div className="data-row">
             <div className="row-top">
                 <span>Author: {props.arrayData['data']['author']}</span>
-                <span>Subreddit: &nbsp;
-                    <Link to={"/subreddit/" + props.arrayData['data']['subreddit']} >
-                        {props.arrayData['data']['subreddit']}
-                    </Link>
-                </span>
+                {props.showSub && (<span>Subreddit: &nbsp;<Link to={"/subreddit/" + props.arrayData['data']['subreddit']} >
+                    {props.arrayData['data']['subreddit']}
+                </Link></span>)}
             </div>
-            <h2>{props.arrayData['data']['title']}</h2>
+            <Link to={"/post/" + props.arrayData['data']['id']} className="post-link" state={{link: props.arrayData['data']['permalink']}} >
+                <h2>{props.arrayData['data']['title']}</h2>
+            </Link>
             {renderPost(props.arrayData)}
             <div className="row-footer">
                 <span className="material-symbols-outlined">arrow_upward</span>

@@ -25,6 +25,16 @@
     margin-top: 1rem;
 }
 
+.data-row .post-link {
+    text-decoration: none;
+    color: black;
+} 
+
+.post-link:hover {
+    color: red;
+    text-decoration: underline;
+}
+
 @media only screen and (max-width : 450px){
     .data-row {
         width: 80vw;
