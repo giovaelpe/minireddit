@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
+import { Favorites } from './Favorites/Favorites';
 import { Popularfeed } from './Popularfeed/Popularfeed';
 import { Post } from './Post/Post';
 import { Subreddit } from './Subreddit/Subredditfeed';
@@ -52,6 +53,9 @@ function App() {
           } />
           <Route path='/post/:postname' element={
             <Post />
+          } />
+          <Route path='/favorites' element={
+            <Favorites />
           } />
         </Routes>
       </main>

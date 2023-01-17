@@ -4,16 +4,16 @@ import { useLocation } from "react-router-dom";
 import { loadPost, quitPost } from "./postSlice";
 import { Loader } from "../features/Loader"
 import "./Post.css";
-import { add, remove } from "../Favorites/favoritesSlice";
+import { addPost, removePost } from "../Favorites/favoritesSlice";
 
 export function Post(props) {
     const location = useLocation();
     const dispatch = useDispatch();
     const postData = useSelector(state => state.postData);
-    const favorites = useSelector(state => state.favorites);
+    const favorites = useSelector(state => state.favorites.posts);
     const endpoint = "https://www.reddit.com" + location.state.link + ".json";
     const [added, setadded] = useState(prev => {
-        if(favorites.includes(location.pathname)){
+        if (favorites.includes(location.pathname)) {
             return true;
         } else {
             return false;
@@ -22,18 +22,24 @@ export function Post(props) {
 
     useEffect(() => {
         dispatch(loadPost(endpoint));
-        
+
         return () => {
             dispatch(quitPost());
         }
     }, [dispatch, endpoint]);
 
     const addFavorites = () => {
-        if(added){
-            dispatch(remove(location.pathname));
+        if (added) {
+            dispatch(removePost({
+                post: location.pathname,
+                extras: location.state.link
+            }));
             setadded(false);
         } else {
-            dispatch(add(location.pathname));
+            dispatch(addPost({
+                post: location.pathname,
+                extras: location.state.link
+            }));
             setadded(true);
         }
     }
@@ -53,8 +59,8 @@ export function Post(props) {
             <div>
                 <div className="post-marquee">
                     Author: {postInfo['author']}
-                    <button className="material-symbols-outlined" onClick={addFavorites} style={added? {backgroundColor: "gold"}: undefined}>
-                        bookmark_add
+                    <button className="material-symbols-outlined" onClick={addFavorites} style={added ? { backgroundColor: "gold" } : undefined}>
+                        {added ? "bookmark_added" : "bookmark_add"}
                     </button>
                 </div>
                 <div className="content">
