@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { loadPost, quitPost } from "./postSlice";
 import { Loader } from "../features/Loader"
 import "./Post.css";
 import { addPost, removePost } from "../Favorites/favoritesSlice";
 
 export function Post(props) {
+    const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch();
     const postData = useSelector(state => state.postData);
@@ -65,7 +66,9 @@ export function Post(props) {
                 </div>
                 <div className="content">
                     <h2>
-                        <button className="material-symbols-outlined only-desktop">
+                        <button className="material-symbols-outlined only-desktop"
+                        onClick={() => navigate(-1)}
+                        >
                             arrow_back
                         </button>
                         {postInfo['title']}

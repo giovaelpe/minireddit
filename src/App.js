@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
+import { About } from './About/About';
 import './App.css';
 import { Favorites } from './Favorites/Favorites';
 import { Popularfeed } from './Popularfeed/Popularfeed';
@@ -64,6 +65,7 @@ function App() {
             <Favorites />
           } />
           <Route path='/search' element={<Search />} />
+          <Route path='/about' element={<About />} />
         </Routes>
       </main>
     </div>

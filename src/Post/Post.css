@@ -35,15 +35,21 @@
 .content h2 {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 1.3rem;
     justify-content: center;
     text-align: center;
+    width: 65vw;
+}
+
+.post-container h3 {
+    margin-left: 1rem;
 }
 
 @media only screen and (max-width: 450px) {
     .post-container h2 {
         font-size: 1.2rem;
         margin: 0.5rem;
+        width: 75vw;
     }
     .only-desktop {
         display: none;
