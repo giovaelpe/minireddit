@@ -10,6 +10,7 @@ import popularSlice from './Popularfeed/popularSlice';
 import subredditSlice from './Subreddit/subredditSlice';
 import postSlice from './Post/postSlice';
 import favoritesSlice from './Favorites/favoritesSlice';
+import SearchSlice from './Search/SearchSlice';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -19,7 +20,8 @@ const store = configureStore({
     popularFeed : popularSlice,
     subredditData: subredditSlice,
     postData: postSlice,
-    favorites: favoritesSlice
+    favorites: favoritesSlice,
+    search: SearchSlice
   }
 })
 

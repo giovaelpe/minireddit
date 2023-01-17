@@ -64,7 +64,12 @@ export function Post(props) {
                     </button>
                 </div>
                 <div className="content">
-                    <h2>{postInfo['title']}</h2>
+                    <h2>
+                        <button className="material-symbols-outlined only-desktop">
+                            arrow_back
+                        </button>
+                        {postInfo['title']}
+                    </h2>
                     {postData.loaded && renderContent(postInfo)}
                     <a href={"https://www.reddit.com" + location.state.link} target="_blank" rel="noreferrer">Check out on Reddit</a>
                 </div>

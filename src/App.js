@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import { Favorites } from './Favorites/Favorites';
 import { Popularfeed } from './Popularfeed/Popularfeed';
 import { Post } from './Post/Post';
+import { Search } from './Search/Search';
 import { Subreddit } from './Subreddit/Subredditfeed';
 
 
 function App() {
   const navigate = useNavigate();
+  const [search, setSearch] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/search");
+    navigate("/search?q="+search);
+    setSearch("");
+  }
+  const handleType = ({target}) => {
+    setSearch(target.value);
   }
   return (
     <div className="App">
@@ -40,7 +46,7 @@ function App() {
             </span>
           </NavLink>
           <form onSubmit={handleSubmit}>
-            <input type="text" />
+            <input type="text" onChange={handleType} value={search} required />
             <input type="submit" className="material-symbols-outlined" value="search" />
           </form>
         </nav>
@@ -57,6 +63,7 @@ function App() {
           <Route path='/favorites' element={
             <Favorites />
           } />
+          <Route path='/search' element={<Search />} />
         </Routes>
       </main>
     </div>

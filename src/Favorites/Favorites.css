@@ -1,0 +1,10 @@
+.favorites-container {
+    width: 50vw;
+    margin: 1rem auto;
+}
+
+.favorites-container .posts, .subs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
