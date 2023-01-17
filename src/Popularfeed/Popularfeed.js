@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadPopular } from "./popularSlice";
+import { loadPopular, clean } from "./popularSlice";
 import { Loader } from "../features/Loader"
 import { Datarow } from "../features/Datarow";
 
@@ -9,6 +9,9 @@ export function Popularfeed(props) {
     const popularFeed = useSelector(state => state.popularFeed);
     useEffect(() => {
         dispatch(loadPopular());
+        return () => {
+            dispatch(clean);
+        }
     }, [dispatch])
 
     return (

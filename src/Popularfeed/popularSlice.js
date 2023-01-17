@@ -23,6 +23,13 @@ const popularSlice = createSlice({
             }
         }
     },
+    reducers : {
+        clean(state, action){
+            state.isLoading = false;
+            state.loaded = false;
+            state.hasError = false;
+        }
+    },
     extraReducers : (builder) => {
         builder.addCase(loadPopular.pending, (state, action) => {
             state.isLoading = true;
@@ -40,4 +47,5 @@ const popularSlice = createSlice({
     }
 })
 
+export const {clean} = popularSlice.actions;
 export default popularSlice.reducer;

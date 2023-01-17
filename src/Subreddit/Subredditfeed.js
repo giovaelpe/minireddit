@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Datarow } from "../features/Datarow";
 import { Loader } from "../features/Loader";
 import "./Subreddit.css";
-import { loadSubreddit } from "./subredditSlice";
+import { loadSubreddit, clean } from "./subredditSlice";
 
 export function Subreddit(props) {
     window.scrollTo(0,0);
@@ -15,6 +15,9 @@ export function Subreddit(props) {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(loadSubreddit(endpoint));
+        return () => {
+            dispatch(clean());
+        }
     },[dispatch, endpoint]);
     return (
         <div className="subreddit-container">

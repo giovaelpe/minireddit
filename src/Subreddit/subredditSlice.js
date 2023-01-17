@@ -21,6 +21,13 @@ const subredditSlice = createSlice({
             }
         }
     },
+    reducers : {
+        clean(state, action){
+            state.isLoading = false;
+            state.loaded = false;
+            state.hasError = false;
+        }
+    },
     extraReducers : (builder) => {
         builder.addCase(loadSubreddit.pending, (state, action) => {
             state.isLoading = true;
@@ -38,4 +45,5 @@ const subredditSlice = createSlice({
     }
 })
 
+export const {clean} = subredditSlice.actions;
 export default subredditSlice.reducer;
